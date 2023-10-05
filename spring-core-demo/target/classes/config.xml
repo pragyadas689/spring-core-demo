@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!-- exercise 5 Constructor injection-->
+    <bean class="com.pwc.User" name = "user1">
+      <constructor-arg name="id" value="101"/>
+        <constructor-arg name = "name" value = "John" />
+        <constructor-arg name="email" value="j@gmail.com"/>
+    </bean>
+
+    <bean class="com.pwc.Category"  name="category1">
+        <constructor-arg name="catId" value="101"/>
+        <constructor-arg name="catName" value="Laptop"/>
+    </bean>
+
+    <bean class="com.pwc.Product" name="product1">
+        <constructor-arg name="pid" value="1"/>
+        <constructor-arg name="productName" value="HP"/>
+        <constructor-arg name="category" ref="category1"/>
+    </bean>
+
+    <bean class="com.pwc.Calculator" name="calculator1">
+        <constructor-arg value="100" type="double" index="1"/>
+        <constructor-arg value="200" type="double" index="0"/>
+    </bean>
+
+    <!--Exercise 4 ref type -->
+    <bean class="com.pwc.Address" name="address1">
+        <property name="city" value="delhi"/>
+        <property name="country" value="India"/>
+    </bean>
+    <bean class="com.pwc.Customer" name="customer1">
+        <property name="custId" value="101"/>
+        <property name="name" value="Mark"/>
+        <property name="address" ref="address1"/>
+    </bean>
+
+    <!--init destroy method -->
+    <bean class="com.pwc.Student" name="student1">
+        <property name="name" value = "pragya"/>
+    </bean>
+
+    <bean class="com.pwc.Employee" name="employee1" init-method="init" destroy-method="destroy">
+        <property name="name" value="Pragya"/>
+    </bean>
+</beans>
